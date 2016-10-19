@@ -60,13 +60,13 @@ if test `echo "$BOXTYPE" | cut -b 1-2` == "dm"; then
 fi
 
 AC_ARG_WITH(libvugles2,
-+	AS_HELP_STRING([--with-libvugles2],[use libvugles2, yes or no]),
-+	[with_libvugles2=$withval],[with_libvugles2=no])
-+if test "$with_libvugles2" = "yes"; then
-+	PKG_CHECK_MODULES(LIBVUGLES2, [libvugles2])
-+	GLES_CFLAGS="-DUSE_LIBVUGLES2"
-+fi
-+AM_CONDITIONAL(HAVE_LIBVUGLES2, test "$with_libvugles2" = "yes")
+	AS_HELP_STRING([--with-libvugles2],[use libvugles2, yes or no]),
+	[with_libvugles2=$withval],[with_libvugles2=no])
+if test "$with_libvugles2" = "yes"; then
+	PKG_CHECK_MODULES(LIBVUGLES2, [libvugles2])
+	GLES_CFLAGS="-DUSE_LIBVUGLES2"
+fi
+AM_CONDITIONAL(HAVE_LIBVUGLES2, test "$with_libvugles2" = "yes")
 
 if test "$BOXTYPE" == "vusolo2" -o "$BOXTYPE" == "vuduo2" -o "$BOXTYPE" == "vusolose" -o "$BOXTYPE" == "vusolo4k" -o "$BOXTYPE" == "vuzero"; then
 	AC_DEFINE(VUPLUS_RC_WORKAROUND, 1, [workaround for problem with vuplus event/rc driver])
